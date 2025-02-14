@@ -2,11 +2,12 @@
 external help file: Microsoft.PowerShell.Commands.Utility.dll-Help.xml
 Locale: en-US
 Module Name: Microsoft.PowerShell.Utility
-ms.date: 06/27/2019
+ms.date: 12/12/2022
 online version: https://learn.microsoft.com/powershell/module/microsoft.powershell.utility/register-objectevent?view=powershell-5.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Register-ObjectEvent
 ---
+
 # Register-ObjectEvent
 
 ## SYNOPSIS
@@ -127,7 +128,7 @@ Finally, we run the `Enable-ProcessCreationEvent` function in the remote session
 ### Example 4: Use the dynamic module in the PSEventJob object
 
 This example shows how to use the dynamic module in the **PSEventJob** object that is created when
-you include an **Action** in an event registration. First we createand and enable a timer object,
+you include an **Action** in an event registration. First we create and enable a timer object,
 then set the interval of the timer to 500 (milliseconds). The `Register-ObjectEvent` cmdlet
 registers the **Elapsed** event of the timer object. The **PSEventJob** object is saved in the
 `$Job` variable and is also available in the **Action** property of the event subscriber. For more
@@ -351,14 +352,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### None
 
-You cannot pipe objects to `Register-ObjectEvent`.
+You can't pipe objects to this cmdlet.
 
 ## OUTPUTS
 
-### None or System.Management.Automation.PSEventJob
+### None
 
-When you use the **Action** parameter, `Register-ObjectEvent` returns a
-**System.Management.Automation.PSEventJob** object. Otherwise, it does not generate any output.
+By default, this cmdlet returns no output.
+
+### System.Management.Automation.PSEventJob
+
+When you use the **Action** parameter, this cmdlet returns a **PSEventJob** object.
 
 ## NOTES
 

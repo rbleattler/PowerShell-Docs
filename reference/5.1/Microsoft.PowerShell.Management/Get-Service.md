@@ -2,11 +2,12 @@
 external help file: Microsoft.PowerShell.Commands.Management.dll-Help.xml
 Locale: en-US
 Module Name: Microsoft.PowerShell.Management
-ms.date: 05/17/2022
+ms.date: 03/20/2024
 online version: https://learn.microsoft.com/powershell/module/microsoft.powershell.management/get-service?view=powershell-5.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Get-Service
 ---
+
 # Get-Service
 
 ## SYNOPSIS
@@ -249,7 +250,7 @@ Aliases: DS
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -353,7 +354,7 @@ Aliases: SDO, ServicesDependedOn
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: True
 ```
@@ -367,9 +368,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.ServiceProcess.ServiceController, System.String
+### System.ServiceProcess.ServiceController
 
-You can pipe a service object or a service name to this cmdlet.
+You can pipe a service object to this cmdlet.
+
+### System.String
+
+You can pipe a service name to this cmdlet.
 
 ## OUTPUTS
 
@@ -379,8 +384,9 @@ This cmdlet returns objects that represent the services on the computer.
 
 ## NOTES
 
-You can also refer to `Get-Service` by its built-in alias, `gsv`. For more information, see
-[about_Aliases](../Microsoft.PowerShell.Core/About/about_Aliases.md).
+Windows PowerShell includes the following aliases for `Get-Service`:
+
+- `gsv`
 
 This cmdlet can display services only when the current user has permission to see them. If this
 cmdlet does not display services, you might not have permission to see them.
@@ -389,10 +395,21 @@ To find the service name and display name of each service on your system, type `
 service names appear in the **Name** column, and the display names appear in the **DisplayName**
 column.
 
+> [!NOTE]
+> Typically, `Get-Service` returns information about services and not driver. However, if you
+> specify the name of a driver, `Get-Service` returns information about the driver.
+>
+> - Enumeration doesn't include device driver services
+> - When a wildcard is specified, the cmdlet only returns Windows services
+> - If you specify the **Name** or **DisplayName** that is an exact match to a device service name,
+>   then the device instance is returned
+
 When you sort in ascending order by status value, `Stopped` services appear before `Running`
 services. The **Status** property of a service is an enumerated value in which the names of the
 statuses represent integer values. The sort is based on the integer value, not the name. `Running`
-appears before `Stopped` because `Stopped` has a value of `1`, and `Running` has a value of `4`.
+appears before `Stopped` because `Stopped` has a value of `1`, and `Running` has a value of `4`. For
+more information, see
+[ServiceControllerStatus](/dotnet/api/system.serviceprocess.servicecontrollerstatus).
 
 ## RELATED LINKS
 

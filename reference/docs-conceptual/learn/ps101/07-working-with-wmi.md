@@ -1,7 +1,7 @@
 ---
 description: PowerShell has had cmdlets for working with WMI since the beginning.
 ms.custom: Contributor-mikefrobbins
-ms.date: 10/05/2021
+ms.date: 12/08/2022
 ms.reviewer: mirobb
 title: Working with WMI
 ---
@@ -9,14 +9,10 @@ title: Working with WMI
 
 ## WMI and CIM
 
-PowerShell ships by default with cmdlets for working with other technologies such as Windows
-Management Instrumentation (WMI). There are several native WMI cmdlets that exist in PowerShell
-without having to install any additional software or modules.
+Windows PowerShell ships by default with cmdlets for working with other technologies such as Windows Management Instrumentation (WMI). The WMI cmdlets are deprecated and are not available in PowerShell 6+, but are covered here as you may encounter them in older scripts running on Windows PowerShell. For new development, use the CIM cmdlets instead.
 
-PowerShell has had cmdlets for working with WMI since the beginning. `Get-Command` can be used to
-determine what WMI cmdlets exist in PowerShell. The following results are from my Windows 10 lab
-environment computer that is running PowerShell version 5.1. Your results may differ depending on
-what PowerShell version you're running.
+There are several native WMI cmdlets that exist in PowerShell without having to install any additional software or modules.  `Get-Command` can be used to
+determine what WMI cmdlets exist in Windows PowerShell. The following results are from my Windows 10 lab environment computer that is running PowerShell version 5.1. Your results may differ depending on what PowerShell version you're running. 
 
 ```powershell
 Get-Command -Noun WMI*
@@ -33,8 +29,7 @@ Cmdlet          Set-WmiInstance                                    3.1.0.0    Mi
 ```
 
 Common Information Model (CIM) cmdlets were introduced in PowerShell version 3.0. The CIM cmdlets
-are designed so they can be used on both Windows and non-Windows machines. The WMI cmdlets are
-deprecated so my recommendation is to use the CIM cmdlets instead of the older WMI ones.
+are designed so they can be used on both Windows and non-Windows machines. 
 
 The CIM cmdlets are all contained within a module. To obtain a list of the CIM cmdlets, use
 `Get-Command` with the **Module** parameter as shown in the following example.
@@ -183,7 +178,7 @@ Get-CimInstance -ComputerName dc01 -ClassName Win32_BIOS
 Get-CimInstance : Access is denied.
 At line:1 char:1
 + Get-CimInstance -ComputerName dc01 -ClassName Win32_BIOS
-+ ``````````````````````````````````````````````````````~~
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     + CategoryInfo          : PermissionDenied: (root\cimv2:Win32_BIOS:String) [Get-CimI
    nstance], CimException
     + FullyQualifiedErrorId : HRESULT 0x80070005,Microsoft.Management.Infrastructure.Cim

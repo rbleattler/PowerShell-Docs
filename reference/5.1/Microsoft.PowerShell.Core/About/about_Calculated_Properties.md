@@ -1,10 +1,10 @@
 ---
 description: PowerShell provides the ability to dynamically add new properties and alter the formatting of objects output to the pipeline.
 Locale: en-US
-ms.date: 10/09/2020
+ms.date: 09/03/2024
 online version: https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_calculated_properties?view=powershell-5.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
-title: about Calculated Properties
+title: about_Calculated_Properties
 ---
 # about_Calculated_Properties
 
@@ -15,13 +15,13 @@ the formatting of objects output to the pipeline.
 
 ## Long description
 
-A number of PowerShell cmdlets transform, aggregate, or process input objects
-into output objects using parameters that allow the addition of new properties
-to those output objects. These parameters can be used to generate new,
-calculated properties on output objects based on the values of input objects.
-The calculated property is defined by a [hashtable](about_hash_tables.md)
-containing key-value pairs that specify the name of the new property, an
-expression to calculate the value, and optional formatting information.
+Several PowerShell cmdlets transform, group, or process input objects into
+output objects using parameters that allow the addition of new properties to
+those output objects. You can use these parameters to generate new, calculated
+properties on output objects based on the values of input objects. The
+calculated property is defined by a [hashtable][03] containing key-value pairs
+that specify the name of the new property, an expression to calculate the
+value, and optional formatting information.
 
 ## Supported cmdlets
 
@@ -30,7 +30,7 @@ parameter. The `Format-*` cmdlets also support calculated values for the
 **GroupBy** parameter.
 
 The following list itemizes the cmdlets that support calculated properties and
-the key-value pairs that are supported by each cmdlet.
+the key-value pairs that each cmdlet supports.
 
 - `Compare-Object`
   - `expression`
@@ -81,19 +81,22 @@ the key-value pairs that are supported by each cmdlet.
 
 > [!NOTE]
 > The value of the `expression` can be a script block instead of a
-> hashtable. For more information, see the [Notes](#notes) section.
+> hashtable. For more information, see the [Notes][02] section.
 
 ## Hashtable key definitions
 
 - `name`/`label` - Specifies the name of the property being created. You can
   use `name` or its alias, `label`, interchangeably.
-- `expression` - A script block used to calculate the value of the new property.
+- `expression` - A string or script block used to calculate the value of the
+  new property. If the `expression` is a string, the value is interpreted as a
+  property name on the input object. This is a shorter option than
+  `expression = { $_.<PropertyName> }`.
 - `alignment` - Used by cmdlets that produce tabular output to define how the
   values are displayed in a column. The value must be `'left'`, `'center'`, or
   `'right'`.
 - `formatstring` - Specifies a format string that defines how the value is
   formatted for output. For more information about format strings, see
-  [Format types in .NET](/dotnet/standard/base-types/formatting-types).
+  [Format types in .NET][01].
 - `width` - Specifies the maximum width column in a table when the value is
   displayed. The value must be greater than `0`.
 - `depth` - The **Depth** parameter of `Format-Custom` specifies the depth of
@@ -102,9 +105,9 @@ the key-value pairs that are supported by each cmdlet.
 - `ascending` / `descending` - Allows you to specify the order of sorting for
   one or more properties. These are boolean values.
 
-The hashtable keys need not be spelled out as long as the specified name prefix
-is unambiguous. For example, `n` can be used in lieu of `Name` and `e` can be
-used in lieu of `Expression`.
+You don't need to spell out the hashtable keys as long as the specified name
+prefix is unambiguous. For example, you can use `n` instead of `Name` and `e`
+instead of `Expression`.
 
 ## Examples
 
@@ -302,7 +305,7 @@ The `Format-Wide` cmdlet allows you to display the value of one property for
 objects in a collection as a multi-column list.
 
 For this example, we want to see the filename and the size (in kilobytes) as a
-wide listing. Since `Format-Wide` does not display more than one property, we
+wide listing. Since `Format-Wide` doesn't display more than one property, we
 use a calculated property to combine the value of two properties into a single
 value.
 
@@ -357,7 +360,7 @@ Count Name
 ### Select-Object
 
 You can use calculated properties to add additional members to the objects
-output with the `Select-Object` cmdlet. In this example, we are listing the
+output with the `Select-Object` cmdlet. In this example, we're listing the
 PowerShell aliases that begin with the letter `C`. Using `Select-Object`, we
 output the alias, the cmdlet it's mapped to, and a count for the number of
 parameters defined for the cmdlet. Using a calculated property, we can create
@@ -450,7 +453,7 @@ Date       Salesperson UnitsSold
   '1', '10', '2' | Sort-Object { [int] $_ }
   ```
 
-  This example is convenient for cmdlets that do not require (or support)
+  This example is convenient for cmdlets that don't require (or support)
   naming a property via the `Name` key, such as `Sort-Object`, `Group-Object`,
   and `Measure-Object`.
 
@@ -458,7 +461,7 @@ Date       Salesperson UnitsSold
   to a string and used as the name of the property in the output.
 
 - `Expression` script blocks run in _child_ scopes, meaning that the caller's
-  variables cannot be directly modified.
+  variables can't be directly modified.
 
 - Pipeline logic is applied to the output from `Expression` script blocks. This
   means that outputting a single-element array causes that array to be
@@ -466,19 +469,34 @@ Date       Salesperson UnitsSold
 
 - For most cmdlets, errors inside expression script blocks are quietly ignored.
   For `Sort-Object`, statement-terminating and script-terminating errors are
-  _output_ but they do not terminate the statement.
+  _output_ but they don't terminate the statement.
 
 ## See also
 
-- [about_Hash_Tables](about_hash_tables.md)
-- [ConvertTo-Html](xref:Microsoft.PowerShell.Utility.ConvertTo-Html)
-- [Format-Custom](xref:Microsoft.PowerShell.Utility.Format-Custom)
-- [Format-List](xref:Microsoft.PowerShell.Utility.Format-List)
-- [Format-Table](xref:Microsoft.PowerShell.Utility.Format-Table)
-- [Format-Wide](xref:Microsoft.PowerShell.Utility.Format-Wide)
-- [Compare-Object](xref:Microsoft.PowerShell.Utility.Compare-Object)
-- [Group-Object](xref:Microsoft.PowerShell.Utility.Group-Object)
-- [Measure-Object](xref:Microsoft.PowerShell.Utility.Measure-Object)
-- [Select-Object](xref:Microsoft.PowerShell.Utility.Select-Object)
-- [Sort-Object](xref:Microsoft.PowerShell.Utility.Sort-Object)
-- [Format types in .NET](/dotnet/standard/base-types/formatting-types)
+- [about_Hash_Tables][03]
+- [ConvertTo-Html][05]
+- [Format-Custom][06]
+- [Format-List][07]
+- [Format-Table][08]
+- [Format-Wide][09]
+- [Compare-Object][04]
+- [Group-Object][10]
+- [Measure-Object][11]
+- [Select-Object][12]
+- [Sort-Object][13]
+- [Format types in .NET][01]
+
+<!-- link references -->
+[01]: /dotnet/standard/base-types/formatting-types
+[02]: #notes
+[03]: about_hash_tables.md
+[04]: xref:Microsoft.PowerShell.Utility.Compare-Object
+[05]: xref:Microsoft.PowerShell.Utility.ConvertTo-Html
+[06]: xref:Microsoft.PowerShell.Utility.Format-Custom
+[07]: xref:Microsoft.PowerShell.Utility.Format-List
+[08]: xref:Microsoft.PowerShell.Utility.Format-Table
+[09]: xref:Microsoft.PowerShell.Utility.Format-Wide
+[10]: xref:Microsoft.PowerShell.Utility.Group-Object
+[11]: xref:Microsoft.PowerShell.Utility.Measure-Object
+[12]: xref:Microsoft.PowerShell.Utility.Select-Object
+[13]: xref:Microsoft.PowerShell.Utility.Sort-Object

@@ -2,7 +2,7 @@
 external help file: Microsoft.PowerShell.Commands.Utility.dll-Help.xml
 Locale: en-US
 Module Name: Microsoft.PowerShell.Utility
-ms.date: 10/01/2021
+ms.date: 03/06/2024
 online version: https://learn.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-string?view=powershell-5.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: ConvertFrom-String
@@ -24,8 +24,8 @@ ConvertFrom-String [-Delimiter <String>] [-PropertyNames <String[]>] [-InputObje
 ### TemplateParsing
 
 ```
-ConvertFrom-String [-TemplateFile <String[]>] [-TemplateContent <String[]>] [-IncludeExtent] [-UpdateTemplate]
- [-InputObject] <String> [<CommonParameters>]
+ConvertFrom-String [-TemplateFile <String[]>] [-TemplateContent <String[]>] [-IncludeExtent]
+ [-UpdateTemplate] [-InputObject] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -383,9 +383,10 @@ Accept wildcard characters: False
 
 ### CommonParameters
 
-This cmdlet supports the common parameters: `-Debug`, `-ErrorAction`, `-ErrorVariable`,
-`-InformationAction`, `-InformationVariable`, `-OutVariable`, `-OutBuffer`, `-PipelineVariable`,
-`-Verbose`, `-WarningAction`, and `-WarningVariable`. For more information, see [about_CommonParameters](../Microsoft.PowerShell.Core/About/about_CommonParameters.md).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable,
+-InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose,
+-WarningAction, and -WarningVariable. For more information, see
+[about_CommonParameters](../Microsoft.PowerShell.Core/About/about_CommonParameters.md).
 
 ## INPUTS
 
@@ -393,7 +394,13 @@ This cmdlet supports the common parameters: `-Debug`, `-ErrorAction`, `-ErrorVar
 
 ## OUTPUTS
 
+### System.Management.Automation.PSCustomObject
+
 ## NOTES
+
+Windows PowerShell includes the following aliases for `ConvertFrom-String`:
+
+- `CFS`
 
 ## RELATED LINKS
 

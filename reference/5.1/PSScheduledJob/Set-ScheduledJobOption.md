@@ -2,7 +2,7 @@
 external help file: Microsoft.PowerShell.ScheduledJob.dll-Help.xml
 Locale: en-US
 Module Name: PSScheduledJob
-ms.date: 10/05/2021
+ms.date: 12/13/2022
 online version: https://learn.microsoft.com/powershell/module/psscheduledjob/set-scheduledjoboption?view=powershell-5.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Set-ScheduledJobOption
@@ -77,7 +77,7 @@ JobDefinition          :
 
 ```powershell
 Get-ScheduledJobOption -Name "DeployPackage" |
-    Set-ScheduledJobOption -WakeToRun -RequireNetwork:$false -Passthru
+    Set-ScheduledJobOption -WakeToRun -RequireNetwork:$false -PassThru
 ```
 
 ```Output
@@ -103,7 +103,7 @@ DeployPackage scheduled job. The output shows that the WakeToRun and RunElevated
 to `$false`.
 
 The second command uses the `Set-ScheduledJobOpton` cmdlet to change the job options so the values
-of the WakeToRun and RunWithoutNetwork properties are $True. The command uses the **Passthru**
+of the WakeToRun and RunWithoutNetwork properties are $True. The command uses the **PassThru**
 parameter to return the trigger after the change.
 
 This command is not required; it is included only to show the effect of the option change.
@@ -478,14 +478,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.PowerShell.ScheduledJob.ScheduledJobOptions
 
-You can pipe a scheduled job options object to `Set-ScheduledJobOption`.
+You can pipe a scheduled job options object to this cmdlet.
 
 ## OUTPUTS
 
-### None or Microsoft.PowerShell.ScheduledJob.ScheduledJobOptions
+### None
 
-When you use the **Passthru** parameter, `Set-ScheduledJobOption` returns the job options that were
-changed. Otherwise, this cmdlet does not generate any output.
+By default, this cmdlet returns no output.
+
+### Microsoft.PowerShell.ScheduledJob.ScheduledJobOptions
+
+When you use the **PassThru** parameter, this cmdlet returns the job options that were changed.
 
 ## NOTES
 

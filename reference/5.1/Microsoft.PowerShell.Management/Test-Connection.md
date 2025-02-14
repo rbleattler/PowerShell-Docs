@@ -2,7 +2,7 @@
 external help file: Microsoft.PowerShell.Commands.Management.dll-Help.xml
 Locale: en-US
 Module Name: Microsoft.PowerShell.Management
-ms.date: 10/09/2019
+ms.date: 07/31/2024
 online version: https://learn.microsoft.com/powershell/module/microsoft.powershell.management/test-connection?view=powershell-5.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Test-Connection
@@ -162,17 +162,9 @@ cmdlet to create the **PSSession**.
 
 ### -AsJob
 
-Indicates that this cmdlet runs as a background job.
-
-To use this parameter, the local and remote computers must be configured for remoting and, on
-Windows Vista and later versions of the Windows operating system, you must open PowerShell by using
-the **Run as administrator** option. For more information, see
-[about_Remote_Requirements](../microsoft.powershell.core/about/about_remote_requirements.md).
-
-When you specify the **AsJob** parameter, the command immediately returns an object that represents
-the background job. You can continue to work in the session while the job finishes. The job is
-created on the local computer and the results from remote computers are automatically returned to
-the local computer. To get the job results, use the `Receive-Job` cmdlet.
+Indicates that this cmdlet runs as a background job. When you specify the **AsJob** parameter, the
+command immediately returns an object that represents the background job. You can continue to work
+in the session while the job finishes. To get the job results, use the `Receive-Job` cmdlet.
 
 For more information about PowerShell background jobs, see
 [about_Jobs](../Microsoft.PowerShell.Core/About/about_jobs.md) and
@@ -482,17 +474,22 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### None
 
-You can't pipe input to this cmdlet.
+You can't pipe objects to this cmdlet.
 
 ## OUTPUTS
 
-### System.Management.ManagementObject#root\cimv2\Win32_PingStatus, System.Management.Automation.RemotingJob, System.Boolean
+### System.Management.ManagementObject#root\cimv2\Win32_PingStatus
+
+By default, this cmdlet returns a **Win32_PingStatus** object for each ping reply.
+
+### System.Management.Automation.RemotingJob
 
 This cmdlet returns a job object, if you specify the **AsJob** parameter.
 
-If you specify the **Quiet** parameter, it returns a **Boolean** value. If multiple connections are
-tested, an array of **Boolean** values is returned. Otherwise, `Test-Connection` returns a
-**Win32_PingStatus** object for each ping.
+### System.Boolean
+
+When you use the **Quiet** parameter, this returns a **Boolean** value. If the cmdlet tests
+multiple connections, it returns an array of **Boolean** values.
 
 ## NOTES
 

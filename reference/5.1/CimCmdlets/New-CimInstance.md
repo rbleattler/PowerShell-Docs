@@ -2,7 +2,7 @@
 external help file: Microsoft.Management.Infrastructure.CimCmdlets.dll-Help.xml
 Locale: en-US
 Module Name: CimCmdlets
-ms.date: 06/09/2017
+ms.date: 12/09/2022
 online version: https://learn.microsoft.com/powershell/module/cimcmdlets/new-ciminstance?view=powershell-5.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: New-CimInstance
@@ -275,10 +275,10 @@ Accept wildcard characters: False
 
 Specifies the amount of time that the cmdlet waits for a response from the CIM server. By default,
 the value of this parameter is 0, which means that the cmdlet uses the default timeout value for the
-server. If the **OperationTimeoutSec** parameter is set to a value less than the robust connection retry
-timeout of 3 minutes, network failures that last more than the value of the **OperationTimeoutSec**
-parameter are not recoverable, because the operation on the server times out before the client can
-reconnect.
+server. If the **OperationTimeoutSec** parameter is set to a value less than the robust connection
+retry timeout of 3 minutes, network failures that last more than the value of the
+**OperationTimeoutSec** parameter are not recoverable, because the operation on the server times
+out before the client can reconnect.
 
 ```yaml
 Type: System.UInt32
@@ -391,7 +391,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### None
 
-This cmdlet accepts no input objects.
+You can't pipe objects to this cmdlet.
 
 ## OUTPUTS
 
@@ -403,10 +403,10 @@ This cmdlet returns an object that contains the CIM instance information.
 
 ## RELATED LINKS
 
-[Get-CimClass](get-cimclass.md)
+[Get-CimClass](Get-CimClass.md)
 
-[Get-CimInstance](get-ciminstance.md)
+[Get-CimInstance](Get-CimInstance.md)
 
-[Remove-CimInstance](remove-ciminstance.md)
+[Remove-CimInstance](Remove-CimInstance.md)
 
 [Set-CimInstance](Set-CimInstance.md)

@@ -1,7 +1,6 @@
 ---
 description: This is a summarized list of rules for editing PowerShell documentation.
-ms.date: 07/26/2022
-ms.topic: conceptual
+ms.date: 11/16/2022
 title: Editorial checklist
 ---
 # Editor's checklist
@@ -120,4 +119,4 @@ articles in the Contributor's Guide for detailed explanations and examples of th
 <!-- line references -->
 [1]: https://github.github.com/gfm/#atx-headings
 [2]: /contribute/code-in-docs#supported-languages
-[3]: powershell-style-guide.md#product-terminology
+[3]: product-terminology.md

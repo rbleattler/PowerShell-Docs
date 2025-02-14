@@ -2,7 +2,7 @@
 external help file: System.Management.Automation.dll-Help.xml
 Locale: en-US
 Module Name: Microsoft.PowerShell.Core
-ms.date: 04/08/2020
+ms.date: 09/29/2023
 online version: https://learn.microsoft.com/powershell/module/microsoft.powershell.core/start-job?view=powershell-5.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Start-Job
@@ -180,7 +180,7 @@ This example starts a job that collects a large amount of map data and then save
 file.
 
 ```powershell
-Start-Job -Name GetMappingFiles -InitializationScript {Import-Module MapFunctions} -ScriptBlock {
+Start-Job -Name GetMappingFiles -InitializationScript {Import-Module -Name MapFunctions} -ScriptBlock {
    Get-Map -Name * | Set-Content -Path D:\Maps.tif } -RunAs32
 ```
 
@@ -196,7 +196,7 @@ This example uses the `$input` automatic variable to process an input object. Us
 view the job's output.
 
 ```powershell
-Start-Job -ScriptBlock { Get-Content $input } -InputObject "C:\Servers.txt"
+Start-Job -ScriptBlock { Get-Content -Path $input } -InputObject "C:\Servers.txt"
 Receive-Job -Name Job45 -Keep
 ```
 
@@ -567,16 +567,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-You can use the pipeline to send an object with the **Name** property to the **Name** parameter. For
-example, you can pipeline a **FileInfo** object from `Get-ChildItem` to `Start-Job`.
+You can pipe an object with the **Name** property to the **Name** parameter to this cmdlet. For
+example, you can pipe a **FileInfo** object from `Get-ChildItem`.
 
 ## OUTPUTS
 
 ### System.Management.Automation.PSRemotingJob
 
-`Start-Job` returns a **PSRemotingJob** object that represents the job that it started.
+This cmdlet returns a **PSRemotingJob** object representing the job that it started.
 
 ## NOTES
+
+Windows PowerShell includes the following aliases for `Start-Job`:
+
+- `sajb`
 
 To run in the background, `Start-Job` runs in its own session in the current session. When you use
 the `Invoke-Command` cmdlet to run a `Start-Job` command in a session on a remote computer,

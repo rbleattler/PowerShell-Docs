@@ -2,11 +2,12 @@
 external help file: Microsoft.PowerShell.Commands.Utility.dll-Help.xml
 Locale: en-US
 Module Name: Microsoft.PowerShell.Utility
-ms.date: 11/11/2022
+ms.date: 12/12/2022
 online version: https://learn.microsoft.com/powershell/module/microsoft.powershell.utility/format-wide?view=powershell-5.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Format-Wide
 ---
+
 # Format-Wide
 
 ## SYNOPSIS
@@ -176,7 +177,8 @@ Accept wildcard characters: False
 ### -GroupBy
 
 Formats the output in groups based on a shared property or value. Enter an expression or a property
-of the output.
+of the output. The **GroupBy** parameter expects that the objects are sorted. Use the `Sort-Object`
+cmdlet before using `Format-Wide` to group the objects.
 
 The value of the **GroupBy** parameter can be a new calculated property. The calculated property can
 be a script block or a hash table. Valid key-value pairs are:
@@ -292,22 +294,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Management.Automation.PSObject
 
-You can pipe any object to `Format-Wide`.
+You can pipe any object to this cmdlet.
 
 ## OUTPUTS
 
 ### Microsoft.PowerShell.Commands.Internal.Format
 
-`Format-Wide` returns format objects that represent the table.
+This cmdlet returns format objects that represent the table.
 
 ## NOTES
 
 Windows PowerShell includes the following aliases for `Format-Wide`:
 
 - `fw`
-
-The **GroupBy** parameter assumes that the objects are sorted. Use `Sort-Object` before using
-`Format-Custom` to group the objects.
 
 The **View** parameter lets you specify an alternate format for the table. You can use the views
 defined in the `*.format.PS1XML` files in the PowerShell directory or you can create your own views

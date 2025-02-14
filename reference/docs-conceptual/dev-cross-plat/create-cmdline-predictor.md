@@ -1,6 +1,6 @@
 ---
 description: This article describes how to create a command-line predictor to help with command completion in PowerShell.
-ms.date: 09/20/2022
+ms.date: 12/01/2022
 title: How to create a command-line predictor
 ---
 # How to create a command-line predictor
@@ -210,6 +210,11 @@ Create a new PowerShell module project by following these steps:
 1. Run `dotnet build` to produce the assembly. You can find the compiled assembly in the
    `bin/Debug/net6.0` location of your project folder.
 
+   > [!NOTE]
+   > To ensure a responsive user experience, the ICommandPredictor interface has a 20ms time out
+   > for responses from the Predictors. Your predictor code must return results in less than 20ms
+   > to be displayed.
+
 ## Using your predictor plugin
 
 To try out your new predictor, open a new PowerShell 7.2 session and run the following commands:
@@ -223,7 +228,7 @@ With the assembly is loaded in the session, you see the text "HELLO WORLD" appea
 terminal. You can press <kbd>F2</kbd> to switch between the `Inline` view and the `List` view.
 
 For more information about PSReadLine options, see
-[Set-PSReadLineOption](/powershell/module/psreadline/set-psreadlineoption?view=powershell-7.3&preserve-view=true).
+[Set-PSReadLineOption](/powershell/module/psreadline/set-psreadlineoption).
 
 You can get a list of installed predictors, using the following command:
 

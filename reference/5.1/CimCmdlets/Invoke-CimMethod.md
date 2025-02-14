@@ -2,7 +2,7 @@
 external help file: Microsoft.Management.Infrastructure.CimCmdlets.dll-Help.xml
 Locale: en-US
 Module Name: CimCmdlets
-ms.date: 01/21/2020
+ms.date: 12/09/2022
 online version: https://learn.microsoft.com/powershell/module/cimcmdlets/invoke-cimmethod?view=powershell-5.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Invoke-CimMethod
@@ -153,7 +153,7 @@ to `Invoke-CimMethod`.
 
 ```powershell
 $c = Get-CimClass -ClassName Win32_Process
-Invoke-CimMethod -CimClass $c -MethodName "xyz" -Arguments @{ CommandLine = 'notepad.exe' }
+Invoke-CimMethod -CimClass $c -MethodName "xyz" -Arguments @{CommandLine='notepad.exe'}
 ```
 
 ## PARAMETERS
@@ -451,11 +451,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Management.Infrastructure.CimClass
 
-This cmdlet accepts a CIM class as an input object.
+You can pipe a CIM class to this cmdlet.
 
 ### Microsoft.Management.Infrastructure.CimInstance
 
-This cmdlet accepts a CIM instance as an input object.
+You can pipe a CIM instance to this cmdlet.
 
 ## OUTPUTS
 
@@ -467,9 +467,9 @@ This cmdlet returns an object.
 
 ## RELATED LINKS
 
-[Get-CimClass](get-cimclass.md)
+[Get-CimClass](Get-CimClass.md)
 
-[Get-CimInstance](get-ciminstance.md)
+[Get-CimInstance](Get-CimInstance.md)
 
 [Get-CimSession](Get-CimSession.md)
 

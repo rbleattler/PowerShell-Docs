@@ -2,7 +2,7 @@
 external help file: Microsoft.PowerShell.ScheduledJob.dll-Help.xml
 Locale: en-US
 Module Name: PSScheduledJob
-ms.date: 05/17/2022
+ms.date: 12/13/2022
 online version: https://learn.microsoft.com/powershell/module/psscheduledjob/set-jobtrigger?view=powershell-5.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
 title: Set-JobTrigger
@@ -69,7 +69,7 @@ Id         Frequency       Time                   DaysOfWeek              Enable
 ```
 
 ```powershell
-Get-JobTrigger -Name "DeployPackage" | Set-JobTrigger -DaysOfWeek "Wednesday", "Sunday" -Passthru
+Get-JobTrigger -Name "DeployPackage" | Set-JobTrigger -DaysOfWeek "Wednesday", "Sunday" -PassThru
 ```
 
 ```Output
@@ -85,7 +85,7 @@ Saturdays.
 The second command uses the `Get-JobTrigger` cmdlet to get the job trigger of the `DeployPackage`
 scheduled job. A pipeline operator (`|`) sends the trigger to the `Set-JobTrigger` cmdlet, which
 changes the job trigger so that it starts the `DeployPackage` job on Wednesdays and Sundays. The
-command uses the **Passthru** parameter to return the trigger after the change.
+command uses the **PassThru** parameter to return the trigger after the change.
 
 This command is not required; it is included only to show the effect of the trigger change.
 
@@ -124,7 +124,7 @@ The second command uses the `Get-JobTrigger` cmdlet to get the **AtStartup** job
 `Inventory` job. The command uses the **TriggerID** parameter to identify the job trigger. A
 pipeline operator (`|`) sends the job trigger to the `Set-JobTrigger` cmdlet, which changes it to a
 weekly job trigger that runs every four weeks on Monday at midnight. The command uses the
-**Passthru** parameter to return the trigger after the change.
+**PassThru** parameter to return the trigger after the change.
 
 This command is not required; it is included only to show the effect of the trigger change.
 
@@ -558,14 +558,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.PowerShell.ScheduledJob.ScheduledJobTrigger
 
-You can pipe multiple job triggers to `Set-JobTrigger`.
+You can pipe a job trigger to this cmdlet.
 
 ## OUTPUTS
 
-### None or Microsoft.PowerShell.ScheduledJob.ScheduledJobTrigger
+### None
 
-When you use the **Passthru** parameter, `Set-JobTrigger` returns the job triggers that were
-changed. Otherwise, this cmdlet does not generate any output.
+By default, this cmdlet returns no output.
+
+### Microsoft.PowerShell.ScheduledJob.ScheduledJobTrigger
+
+When you use the **PassThru** parameter, this cmdlet returns the job triggers that it changed.
 
 ## NOTES
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Management.Infrastructure.CimCmdlets.dll-Help.xml
 Locale: en-US
 Module Name: CimCmdlets
-ms.date: 07/06/2022
+ms.date: 12/09/2022
 no-loc: [-Forward]
 online version: https://learn.microsoft.com/powershell/module/cimcmdlets/register-cimindicationevent?view=powershell-5.1&WT.mc_id=ps-gethelp
 schema: 2.0.0
@@ -96,13 +96,13 @@ script block for **Action**, which uses the `$event` variable to access the even
 $action = {
   $name = $event.SourceEventArgs.NewEvent.ProcessName
   $id = $event.SourceEventArgs.NewEvent.ProcessId
-  Write-Host -Object "New Process Started : Name = $name
- ID = $id"
+  Write-Host -Object "New Process Started : Name = $name ID = $id"
 }
 Register-CimIndicationEvent -ClassName 'Win32_ProcessStartTrace' -SourceIdentifier "ProcessStarted" -Action $action
 ```
 
-For more information, see [Win32_ProcessStartTrace](/previous-versions/windows/desktop/krnlprov/win32-processstarttrace).
+For more information, see
+[Win32_ProcessStartTrace](/previous-versions/windows/desktop/krnlprov/win32-processstarttrace).
 
 ### Example 4: Register the events on a remote computer
 
@@ -378,26 +378,27 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### None
 
-This cmdlet accepts no input objects.
+You can't pipe objects to this cmdlet.
 
 ## OUTPUTS
 
 ### System.Object
 
-This cmdlet outputs an **EventSubscription** object.
+This cmdlet returns an **EventSubscription** object.
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Get-Event](../microsoft.powershell.utility/get-event.md)
+[Get-Event](../Microsoft.Powershell.Utility/Get-Event.md)
 
-[Remove-Event](../microsoft.powershell.utility/remove-event.md)
+[Remove-Event](../Microsoft.Powershell.Utility/Remove-Event.md)
 
-[Unregister-Event](../microsoft.powershell.utility/unregister-event.md)
+[Unregister-Event](../Microsoft.Powershell.Utility/Unregister-Event.md)
 
-[Write-Host](../microsoft.powershell.utility/write-host.md)
+[Write-Host](../Microsoft.Powershell.Utility/Write-Host.md)
 
 [Get-CimSession](Get-CimSession.md)
 
 [New-CimSession](New-CimSession.md)
+
